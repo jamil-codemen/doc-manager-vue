@@ -1,53 +1,112 @@
 <template>
-<div class="bg-blue-700 max-h-full">
-      <div class="container mx-auto relative">
-    <div class="flex flex-wrap">
-      <div class="w-6/12 mt-7 text-white">
-        logo
-      </div>
-      <div class="w-6/12">
-        <div class="flex flex-wrap space-x-10 mt-7 text-white">
-            <div>
-                Home
-            </div>
-            <div>
-                Documentation
-            </div>
-            <div>
-                Forum
-            </div>
-            <div>
-                Pages
-            </div>
-            <div>
-                Blog
-            </div>
-        </div>
-      </div>
+  <div class="relative min-h-screen md:flex">
+    <!-- mobile menu bar -->
+    <div class="bg-gray-800 text-gray-100 flex justify-between md:hidden">
+      <!-- logo -->
+      <a href="#" class="block p-4 text-white font-bold">Under Dev</a>
+
+      <!-- mobile menu button -->
+      <button
+        @click="handleToggle"
+        class="mobile-menu-button p-4 focus:outline-none focus:bg-gray-700"
+      >
+        <svg
+          class="h-5 w-5"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
     </div>
-    <div class="flex flex-wrap justify-center">
-        <div class="pt-48 pb-9">
-            <p class="text-5xl font-bold text-white">How can we help you?</p>
-        </div>
+
+    <!-- sidebar -->
+    <div
+      :class="{'-translate-x-full':isActive}"
+      class="sidebar bg-blue-800 text-blue-100 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform  md:relative md:translate-x-0 transition duration-200 ease-in-out"
+    >
+      <!-- logo -->
+      <a href="#" class="text-white flex items-center space-x-2 px-4">
+        <svg
+          class="w-8 h-8"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+          />
+        </svg>
+        <span class="text-2xl font-extrabold">Under Dev</span>
+      </a>
+
+      <!-- nav -->
+      <nav>
+        <a
+          href="#"
+          class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white"
+        >
+        <router-link to="/">
+Home
+        </router-link>
+        </a>
+        <a
+          href=""
+          class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white"
+        >
+          <router-link to="/about">
+About
+        </router-link>
+        </a>
+        <a
+          href=""
+          class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white"
+        >
+          Knowledge
+        </a>
+        <a
+          href=""
+          class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white"
+        >
+          Tutorials
+        </a>
+        
+      </nav>
     </div>
-      <div class="flex flex-wrap justify-center pb-48">
-        <div>
-            <input type="text" class="py-4 px-40 border rounded-lg inline-block" placeholder="Search for topics">
-        </div>
-        <div>
-            <button class="px-4 py-4 bg-blue-500 text-white rounded-lg mx-2">Search</button>
-        </div>
+
+    <!-- content -->
+    <div class="flex-1 p-10">
+      <router-view/>
     </div>
-<CardSection />
   </div>
-</div>
 </template>
+<style scoped>
+
+</style>
 <script>
-import CardSection from '@/components/Home/CardSection.vue'
 export default {
   name: "Navbar",
-  components:{
-      CardSection
-  }
+  data(){
+    return{
+isActive:true
+    };
+  },
+
+  methods: {
+    handleToggle() {
+      this.isActive = !this.isActive;
+    },
+  },
 };
 </script>
