@@ -53,34 +53,67 @@
 
       <!-- nav -->
       <nav>
+        <router-link to="/">
         <a
           href="#"
           class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white"
         >
-        <router-link to="/">
+        
 Home
-        </router-link>
+        
         </a>
+        </router-link>
+        <router-link to="/about">
         <a
           href=""
           class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white"
         >
-          <router-link to="/about">
+          
 About
-        </router-link>
+       
         </a>
-        <a
-          href=""
+         </router-link>
+        <a @click="handleDropdown"
+          href="#"
           class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white"
         >
           Knowledge
         </a>
+          <a
+          href="#"
+          :class="{'hidden':dropdown}"
+          class="block py-0.5 px-6 rounded transition duration-200 hover:bg-blue-700 hover:text-white"
+        >
+          Javascript
+        </a>
+          <a
+          href="#"
+          :class="{'hidden':dropdown}"
+          class="block py-0.5 px-6 rounded transition duration-200 hover:bg-blue-700 hover:text-white"
+        >
+          React
+        </a>
+          <a
+          href="#"
+          :class="{'hidden':dropdown}"
+          class="block py-0.5 px-6 rounded transition duration-200 hover:bg-blue-700 hover:text-white"
+        >
+          Vue
+        </a>
         <a
-          href=""
+          href="#"
           class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white"
         >
           Tutorials
         </a>
+        <router-link to="/dashboard">
+        <a
+          href="#"
+          class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white"
+        >
+          Dashboard
+        </a>
+        </router-link>
         
       </nav>
     </div>
@@ -99,13 +132,18 @@ export default {
   name: "Navbar",
   data(){
     return{
-isActive:true
+isActive:true,
+dropdown:true,
     };
   },
 
   methods: {
     handleToggle() {
       this.isActive = !this.isActive;
+    },
+    handleDropdown(){
+this.dropdown=!this.dropdown;
+
     },
   },
 };

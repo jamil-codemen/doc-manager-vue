@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import Dashboard from '../views/Dashboard.vue'
+import CreateDocForm from '../components/Dahsboard/CreateDocForm';
+import FormCategory from '../components/Dahsboard/FormCategory'
 
 const routes = [
   {
@@ -16,7 +19,31 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/About.vue')
     }
-  }
+  },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      
+      component: function () {
+        return import('../views/Dashboard.vue')
+      },
+  },
+  {
+    path: '/createdoc',
+    name: 'CreateDocForm',
+    
+    component: function () {
+      return import('../../src/components/Dahsboard/CreateDocForm.vue')
+    },
+},
+{
+  path: '/formcategory',
+  name: 'FormCategory',
+  
+  component: function () {
+    return import('../../src/components/Dahsboard/FormCategory.vue')
+  },
+}
 ]
 
 const router = createRouter({

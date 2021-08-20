@@ -65,7 +65,7 @@
           </div>
         </div>
         <div class="w-full md:w-4/12">
-          <div class="px-6 py-6 bg-purple-50 mx-10 text-center space-y-3">
+          <div class="px-6 py-6 bg-gray-50 mx-10 text-center space-y-3">
             <p class="text-2xl text-gray-900">Environment</p>
             <p class="text-gray-900">
               Professionally cultivate one-to-one find customer service with
